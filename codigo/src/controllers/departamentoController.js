@@ -1,5 +1,11 @@
 const { sql, conectarDB } = require("../config/db");
 
+/**
+ * Obtiene departamentos aplicando filtros opcionales.
+ *
+ * @param {Object} req - Solicitud HTTP.
+ * @param {Object} res - Respuesta HTTP.
+ */
 async function obtenerDepartamentos(req, res) {
     try {
         const { DepartmentID, Name, GroupName } = req.body;
@@ -24,6 +30,12 @@ async function obtenerDepartamentos(req, res) {
     }
 }
 
+/**
+ * Agrega un nuevo departamento.
+ *
+ * @param {Object} req - Solicitud HTTP con Name y GroupName.
+ * @param {Object} res - Respuesta HTTP.
+ */
 async function agregarDepartamento(req, res) {
     try {
         const { Name, GroupName } = req.body;
@@ -49,6 +61,12 @@ async function agregarDepartamento(req, res) {
     }
 }
 
+/**
+ * Actualiza la información de un departamento existente.
+ *
+ * @param {Object} req - Solicitud HTTP con DepartmentID, Name y GroupName.
+ * @param {Object} res - Respuesta HTTP.
+ */
 async function actualizarDepartamento(req, res) {
     try {
         const { DepartmentID, Name, GroupName } = req.body;
@@ -75,6 +93,12 @@ async function actualizarDepartamento(req, res) {
     }
 }
 
+/**
+ * Elimina un departamento utilizando su identificador.
+ *
+ * @param {Object} req - Solicitud HTTP con DepartmentID.
+ * @param {Object} res - Respuesta HTTP.
+ */
 async function eliminarDepartamento(req, res) {
     try {
         const { DepartmentID } = req.body;
@@ -99,6 +123,13 @@ async function eliminarDepartamento(req, res) {
     }
 }
 
+/**
+ * Obtiene los empleados asociados a cada departamento,
+ * aplicando filtros opcionales por departamento, nombre y apellido.
+ *
+ * @param {Object} req - Solicitud HTTP con los filtros de búsqueda.
+ * @param {Object} res - Respuesta HTTP.
+ */
 async function verEmpleadosPorDepartamento(req, res) {
     try {
         const { Departamento, Nombre, Apellido } = req.body;
@@ -123,6 +154,9 @@ async function verEmpleadosPorDepartamento(req, res) {
     }
 }
 
+/**
+ * Exporta los controladores para ser utilizados por las rutas de la API.
+ */
 module.exports = {
     obtenerDepartamentos,
     agregarDepartamento,
